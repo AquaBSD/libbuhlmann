@@ -2,6 +2,8 @@
 
 #include "buhlmann.h"
 
+#include <config.h>
+
 #define PP_VAPOR 0.063f
 
 #define ZHL12_NR_COMPARTMENTS 16
