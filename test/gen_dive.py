@@ -18,10 +18,10 @@ def check_negative(value):
 
 parser = argparse.ArgumentParser(description='Generate a dive profile.')
 
-parser.add_argument('-d', '--depth',  type=check_negative, required=True, 
+parser.add_argument('-d', '--depth',  type=check_negative, required=True,
 					dest='depth', help='depth of the dive in meters.')
 
-parser.add_argument('-t', '--time', type=check_negative, required=True, 
+parser.add_argument('-t', '--time', type=check_negative, required=True,
                    dest='time',help='bottom time in minutes.')
 
 args = parser.parse_args()
@@ -36,10 +36,8 @@ while (time <= btime and depth < maxdepth):
 	time = time + sampling
 	print (str(time) + " " +str(depth/10+1))
 
-asctime = depth / ascrate
-
 #bottom
-while (time <= btime - asctime):
+while (time <= btime):
 	time = time + sampling
 	print (str(time) + " " +str(depth/10+1))
 
