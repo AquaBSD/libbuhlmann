@@ -40,16 +40,16 @@ double ventilation(double pamb,
                    double rq,
                    double ig_ratio);
 
-double compartment_mvalue(struct compartment_constants *constants,
+double compartment_mvalue(const struct compartment_constants *constants,
                           struct compartment_state *compt);
-void compartment_stagnate(struct compartment_constants *constants,
+void compartment_stagnate(const struct compartment_constants *constants,
                           struct compartment_state *cur,
                           struct compartment_state *end,
                           double p_ambient,
                           double time,
                           double rq,
                           double n2_ratio, double he_ratio);
-void compartment_descend(struct compartment_constants *constants,
+void compartment_descend(const struct compartment_constants *constants,
                          struct compartment_state *cur,
                          struct compartment_state *end,
                          double p_ambient,

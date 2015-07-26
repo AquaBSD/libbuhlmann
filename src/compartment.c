@@ -4,7 +4,7 @@
 
 #include <config.h>
 
-double compartment_mvalue(struct compartment_constants *constants,
+double compartment_mvalue(const struct compartment_constants *constants,
                           struct compartment_state *compt)
 {
     double a, b;
@@ -17,7 +17,7 @@ double compartment_mvalue(struct compartment_constants *constants,
     return ((compt->n2_p + compt->he_p) - a) * b;
 }
 
-void compartment_stagnate(struct compartment_constants *constants,
+void compartment_stagnate(const struct compartment_constants *constants,
                           struct compartment_state *cur,
                           struct compartment_state *end,
                           double p_ambient,
@@ -37,7 +37,7 @@ void compartment_stagnate(struct compartment_constants *constants,
                         constants->he_h);
 }
 
-void compartment_descend(struct compartment_constants *constants,
+void compartment_descend(const struct compartment_constants *constants,
                          struct compartment_state *cur,
                          struct compartment_state *end,
                          double p_ambient,
