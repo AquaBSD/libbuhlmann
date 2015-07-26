@@ -7,3 +7,7 @@ libbuhlmann_la_SOURCES = buhlmann.c \
 						 alveolar.c
 libbuhlmann_la_CFLAGS = -W -Wall -O2
 include_HEADERS = buhlmann.h
+noinst_PROGRAMS = dive
+dive_LDFLAGS = -static
+dive_LDADD = libbuhlmann.la
+dive_SOURCES = dive.c
