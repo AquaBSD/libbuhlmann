@@ -48,13 +48,17 @@ void compartment_descend(const struct compartment_constants *constants,
 {
     double n2_palv;
     double he_palv;
+    double n2_rate;
+    double he_rate;
 
     n2_palv = ventilation(p_ambient, rq, n2_ratio);
     he_palv = ventilation(p_ambient, rq, he_ratio);
+    n2_rate = rate * n2_ratio;
+    he_rate = rate * he_ratio;
 
-    end->n2_p = schreiner(cur->n2_p, n2_palv, rate, time,
+    end->n2_p = schreiner(cur->n2_p, n2_palv, n2_rate, time,
                           constants->n2_h);
-    end->he_p = schreiner(cur->he_p, he_palv, rate, time,
+    end->he_p = schreiner(cur->he_p, he_palv, he_rate, time,
                           constants->he_h);
 }
 

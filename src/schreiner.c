@@ -14,7 +14,7 @@ double schreiner(double pt0,
     double pt;
 
     k = M_LN2 / half_val;
-    pt = palv0 + r * (t - 1.0f / k) + (palv0 - pt0 - r / k) * exp(-k * t);
+    pt = palv0 + r * (t - 1.0f / k) - (palv0 - pt0 - r / k) * exp(-k * t);
 
     return pt;
 }
