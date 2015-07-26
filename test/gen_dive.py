@@ -7,7 +7,7 @@ decrate=20
 sampling=.1
 time=0.0
 depth=0.0
-
+stime=10.0
 
 def check_negative(value):
     dvalue = float(value)
@@ -31,18 +31,29 @@ btime = args.time
 maxdepth = args.depth
 
 #descent
-while (time <= btime and depth < maxdepth):
+while (time < btime and depth < maxdepth):
+	print (str(time) + " " +str(depth/10+1))
 	depth = depth + (decrate * sampling)
 	time = time + sampling
-	print (str(time) + " " +str(depth/10+1))
+depth = maxdepth
+print (str(time) + " " +str(depth/10+1))
 
 #bottom
-while (time <= btime):
-	time = time + sampling
+time = time + sampling
+while (time < btime):
 	print (str(time) + " " +str(depth/10+1))
+	time = time + sampling
 
 #ascent
-while (depth >= 1 ):
+depth = depth - (ascrate * sampling)
+time = time + sampling
+while (depth > 0.0):
+	print (str(time) + " " +str(depth/10+1))
 	depth = depth - (ascrate * sampling)
 	time = time + sampling
+
+depth = 0.0
+while (stime > 0):
+	time = time + sampling
+	stime = stime - sampling
 	print (str(time) + " " +str(depth/10+1))
