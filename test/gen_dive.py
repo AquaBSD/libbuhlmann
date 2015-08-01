@@ -11,7 +11,7 @@ stime=10.0
 
 def check_negative(value):
     dvalue = float(value)
-    if dvalue < 0:
+    if dvalue < 0.0:
          raise argparse.ArgumentTypeError("%s is an invalid value" % value)
     return dvalue
 
@@ -27,28 +27,28 @@ parser.add_argument('-t', '--time', type=check_negative, required=True,
 args = parser.parse_args()
 
 
-btime = args.time
-maxdepth = args.depth
+btime = float(args.time) 
+maxdepth = float(args.depth)
 
 #descent
 while (time < btime and depth < maxdepth):
 	print (str(time) + " " +str(depth/10+1))
 	depth = depth + (decrate * sampling)
 	time = time + sampling
-depth = maxdepth
-print (str(time) + " " +str(depth/10+1))
+depth = float(maxdepth)
+print ("%.2f %.2f" % (time , (depth/10+1)))
 
 #bottom
 time = time + sampling
 while (time < btime):
-	print (str(time) + " " +str(depth/10+1))
+	print ("%.2f %.2f" % (time , (depth/10+1)))
 	time = time + sampling
 
 #ascent
 depth = depth - (ascrate * sampling)
 time = time + sampling
 while (depth > 0.0):
-	print (str(time) + " " +str(depth/10+1))
+	print ("%.2f %.2f" % (time , (depth/10+1)))
 	depth = depth - (ascrate * sampling)
 	time = time + sampling
 
@@ -56,4 +56,4 @@ depth = 0.0
 while (stime > 0):
 	time = time + sampling
 	stime = stime - sampling
-	print (str(time) + " " +str(depth/10+1))
+	print ("%.2f %.2f" % (time , (depth/10+1)))
