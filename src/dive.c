@@ -59,7 +59,7 @@ int main(void)
             }
             fprintf(stdout, " %lf %lf", s[i].he_p, s[i].n2_p);
         }
-        fprintf(stdout, "\n");
+        fprintf(stdout, " %lf\n", ceiling(zh_l12, s, ZH_L12_NR_COMPARTMENTS));
 
         lastp = p;
         lastt = t;

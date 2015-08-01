@@ -4,7 +4,8 @@ libbuhlmann_la_SOURCES = buhlmann.c \
 						 schreiner.c \
 						 zh-l12.c \
 						 compartment.c \
-						 alveolar.c
+						 alveolar.c \
+						 ceiling.c
 libbuhlmann_la_CFLAGS = -W -Wall -O2
 include_HEADERS = buhlmann.h
 noinst_PROGRAMS = dive

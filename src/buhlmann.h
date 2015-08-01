@@ -58,4 +58,8 @@ void compartment_descend(const struct compartment_constants *constants,
                          double rq,
                          double n2_ratio, double he_ratio);
 
+double ceiling(const struct compartment_constants *constants,
+               struct compartment_state *compt,
+               int ncompt);
+
 #endif /* _BUHLMANN_H_ */

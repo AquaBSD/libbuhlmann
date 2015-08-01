@@ -16,5 +16,6 @@ AC_CHECK_HEADERS(math.h)
 # Checks for library functions.
 AC_CHECK_FUNCS(getline)
 AC_CHECK_LIB(m, exp)
+AC_CHECK_LIB(m, fmin)
 
 AC_OUTPUT(Makefile src/Makefile)
