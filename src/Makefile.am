@@ -10,4 +10,4 @@ include_HEADERS = buhlmann.h
 noinst_PROGRAMS = dive
 dive_LDFLAGS = -static
 dive_LDADD = libbuhlmann.la
-dive_SOURCES = dive.c
+dive_SOURCES = dive.c getline.c
