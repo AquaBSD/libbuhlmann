@@ -12,7 +12,11 @@ doc = minidom.parse(path)
 nodes = doc.getElementsByTagName('Dive.Sample')
 
 for node in nodes:
-	depth = (float(node.childNodes[2].childNodes[0].nodeValue) / 10 )+ 1
-	time = float(node.childNodes[8].childNodes[0].nodeValue) / 60
-	
-	print ("%.2f %.2f" % (time , depth))
+    if node.hasChildNodes() and len(node.childNodes) > 8:
+        for subNode in node.childNodes:
+            if (subNode.nodeName == "Depth" and subNode.hasChildNodes()):
+                depth = (float(subNode.childNodes[0].nodeValue) / 10) + 1
+            if (subNode.nodeName == "Time" and subNode.hasChildNodes()):
+                time = float(subNode.childNodes[0].nodeValue) / 60
+
+    print ("%.2f %.2f" % (time , depth))
