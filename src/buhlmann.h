@@ -3,16 +3,6 @@
 
 struct compartment_constants
 {
-    double he_h;
-    double n2_h;
-    double he_a;
-    double he_b;
-    double n2_a;
-    double n2_b;
-};
-
-struct compartment_constants_zhl16
-{
   double n2_h;
   double n2_a;
   double n2_b;

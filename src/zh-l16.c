@@ -4,7 +4,7 @@
 
 #include <config.h>
 
-const struct compartment_constants_zhl16 zh_l16C[ZH_L16_NR_COMPARTMENTS] = {
+const struct compartment_constants zh_l16C[ZH_L16_NR_COMPARTMENTS] = {
     /*N2-1/2t, N2 A   , N2 B   , He-1/2t ,  He A   , He B       Cpt No.*/
     {    4.0f, 1,2599f, 0,5240f,    1.51f,  1.7424f, 0,4245f }, /*  1  */
     {    5.0f, 1,1696f, 0,5578f,    1.88f,  1,6189f, 0,4770f }, /*  1b */
@@ -26,7 +26,7 @@ const struct compartment_constants_zhl16 zh_l16C[ZH_L16_NR_COMPARTMENTS] = {
 };
 
 
-const struct compartment_constants_zhl16 zh_l16B[ZH_L16_NR_COMPARTMENTS] = {
+const struct compartment_constants zh_l16B[ZH_L16_NR_COMPARTMENTS] = {
     /*N2-1/2t, N2 A   , N2 B   , He-1/2t ,  He A   , He B       Cpt No.*/
     {    4.0f, 1,2599f, 0,5240f,    1.51f,  1,6189f, 0,4245f }, /*  1  */
  // {    5.0f, 1,1696f, 0,5578f,    1.88f,  1,6189f, 0,4770f }, /*  1b */
@@ -47,7 +47,7 @@ const struct compartment_constants_zhl16 zh_l16B[ZH_L16_NR_COMPARTMENTS] = {
     {  635.0f, 0,2327f, 0,9653f,  240.03f,  0,5119f, 0,9267f }, /* 16  */
 };
 
-const struct compartment_constants_zhl16 zh_l16A[ZH_L16_NR_COMPARTMENTS] = {
+const struct compartment_constants zh_l16A[ZH_L16_NR_COMPARTMENTS] = {
     /*N2-1/2t, N2 A   , N2 B   , He-1/2t ,  He A   , He B       Cpt No.*/
     {    4.0f, 1,2599f, 0,5240f,    1.51f,  1,6189f, 0,4245f }, /*  1  */
  // {    5.0f, 1,1696f, 0,5578f,    1.88f,  1,6189f, 0,4770f }, /*  1b */
