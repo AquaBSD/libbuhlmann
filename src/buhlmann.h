@@ -13,16 +13,12 @@ struct compartment_constants
 
 struct compartment_constants_zhl16
 {
-  double n2_ht;
-  double n2_MoA;
-  double n2_MoB;
-  double n2_MoC;
-  double n2_slope;
-  double he_ht;
-  double he_MoA;
-  double he_MoB;
-  double he_MoC;
-  double he_slope;
+  double n2_h;
+  double n2_a;
+  double n2_b;
+  double he_h;
+  double he_a;
+  double he_b;
 };
 
 struct compartment_state
@@ -46,7 +42,9 @@ double haldane(double pt0,
 extern const struct compartment_constants zh_l12[];
 
 #define ZH_L16_NR_COMPARTMENTS 17
-extern const struct compartment_constants zh_l16[];
+extern const struct compartment_constants zh_l16A[];
+extern const struct compartment_constants zh_l16B[];
+extern const struct compartment_constants zh_l16C[];
 
 #define WATER_VAPOR_PRESSURE 0.0627f
 #define CO2_PRESSURE 0.0534f
