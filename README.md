@@ -30,3 +30,8 @@ was used soon after in dive computer algorithms.
 ## Development
 
 Feel free to contribute on GitHub.
+
+
+## References
+
+Erik C. Baker - Understanding M-Values
