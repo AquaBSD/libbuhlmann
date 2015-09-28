@@ -28,8 +28,8 @@ const struct compartment_constants_zhl16 zh_l16C[ZH_L16_NR_COMPARTMENTS] = {
 
 const struct compartment_constants_zhl16 zh_l16B[ZH_L16_NR_COMPARTMENTS] = {
     /*N2-1/2t, N2 A   , N2 B   , He-1/2t ,  He A   , He B       Cpt No.*/
-    {    4.0f, 1,2599f, 0,5240f,    1.51f,  0.0f   , 0,4245f }, /*  1  */
-    {    5.0f, 1,1696f, 0,5578f,    1.88f,  1,6189f, 0,4770f }, /*  1b */
+    {    4.0f, 1,2599f, 0,5240f,    1.51f,  1,6189f, 0,4245f }, /*  1  */
+ // {    5.0f, 1,1696f, 0,5578f,    1.88f,  1,6189f, 0,4770f }, /*  1b */
     {    8.0f, 1,0000f, 0,6514f,    3.02f,  1,3830f, 0,5747f }, /*  2  */
     {   12.5f, 0,8618f, 0,7222f,    4.72f,  1,1919f, 0,6527f }, /*  3  */
     {   18.5f, 0,7562f, 0,7825f,    6.99f,  1,0458f, 0,7223f }, /*  4  */
@@ -49,8 +49,8 @@ const struct compartment_constants_zhl16 zh_l16B[ZH_L16_NR_COMPARTMENTS] = {
 
 const struct compartment_constants_zhl16 zh_l16A[ZH_L16_NR_COMPARTMENTS] = {
     /*N2-1/2t, N2 A   , N2 B   , He-1/2t ,  He A   , He B       Cpt No.*/
-    {    4.0f, 1,2599f, 0,5240f,    1.51f,  0.0f, 0,4245f }, /*  1  */
-    {    5.0f, 1,1696f, 0,5578f,    1.88f,  1,6189f, 0,4770f }, /*  1b */
+    {    4.0f, 1,2599f, 0,5240f,    1.51f,  1,6189f, 0,4245f }, /*  1  */
+ // {    5.0f, 1,1696f, 0,5578f,    1.88f,  1,6189f, 0,4770f }, /*  1b */
     {    8.0f, 1,0000f, 0,6514f,    3.02f,  1,3830f, 0,5747f }, /*  2  */
     {   12.5f, 0,8618f, 0,7222f,    4.72f,  1,1919f, 0,6527f }, /*  3  */
     {   18.5f, 0,7562f, 0,7825f,    6.99f,  1,0458f, 0,7223f }, /*  4  */
