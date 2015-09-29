@@ -3,9 +3,11 @@ libbuhlmann_la_SOURCES = buhlmann.c \
 						 haldane.c \
 						 schreiner.c \
 						 zh-l12.c \
+						 zh-l16.c \
 						 compartment.c \
 						 alveolar.c \
-						 ceiling.c
+						 ceiling.c \						 
+						 otu.c
 libbuhlmann_la_CFLAGS = -W -Wall -O2
 include_HEADERS = buhlmann.h
 noinst_PROGRAMS = dive
