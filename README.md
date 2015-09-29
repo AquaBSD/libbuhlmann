@@ -1,5 +1,7 @@
 # libbuhlmann
 
+[![Build Status](https://secure.travis-ci.org/AquaBSD/libbuhlmann.svg)](https://travis-ci.org/AquaBSD/libbuhlmann)
+
 #### Table of Contents
 
 1. [Overview](#overview)
