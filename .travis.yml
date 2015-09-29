@@ -1,2 +1,4 @@
 language: c
 compiler: gcc
+install: 
+	- ./bootstrap.sh
