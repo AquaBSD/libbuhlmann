@@ -45,25 +45,25 @@ for line in sys.stdin:
 	hs.append(histline)
 
 fig = plt.figure()
-fig.add_subplot(121)
+ax = fig.add_subplot(121)
 
-l, = plt.plot(t_arr,d_arr)
+plt.plot(t_arr,d_arr)
 plt.gca().invert_yaxis()
 
 
-ax = fig.add_subplot(122)
-ax.set_ylim(0.7, maxpressure) 
+ax2 = fig.add_subplot(122)
+ax2.set_ylim(0.7, maxpressure) 
 
 nbComp = np.arange(len(histline))
 
 
-rect = ax.bar(nbComp,hs[0],width)
+rect = ax2.bar(nbComp,hs[0],width)
 
 
-ax.set_ylabel('Pressure')
-ax.set_title('Pressure by compartment')
-ax.set_xticks(nbComp + width)
-ax.set_xticklabels(('C01', 'C02', 'C03', 'C04', 'C05','C06','C07','C08','C09','C10','C11','C12'))
+ax2.set_ylabel('Pressure')
+ax2.set_title('Pressure by compartment')
+ax2.set_xticks(nbComp + width)
+ax2.set_xticklabels(('C01', 'C02', 'C03', 'C04', 'C05','C06','C07','C08','C09','C10','C11','C12'))
 
 
 axtime = plt.axes([0.2, 0.02, 0.65, 0.03])
@@ -71,9 +71,13 @@ stime= Slider(axtime, 'Time', 0, len(hs)-1, valinit=0,valfmt='%d')
 
 def update(val):
 	time = int(stime.val)
+	ax2.clear()
+	rect = ax2.bar(nbComp,hs[time],width)
+	ax2.set_ylim(0.7, maxpressure) 
 	ax.clear()
-	rect = ax.bar(nbComp,hs[time],width)
-	ax.set_ylim(0.7, maxpressure) 
+	ax.plot(t_arr,d_arr)
+	ax.plot(t_arr[time], d_arr[time], 'or')
+
 	fig.canvas.draw()
 	
 
