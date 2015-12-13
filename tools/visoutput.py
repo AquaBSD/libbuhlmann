@@ -1,6 +1,6 @@
-#!/usr/bin/env python
+#! /usr/bin/python
 """
-An animated image
+
 """
 import numpy as np
 import matplotlib.pyplot as plt
