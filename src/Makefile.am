@@ -6,7 +6,7 @@ libbuhlmann_la_SOURCES = buhlmann.c \
 						 zh-l16.c \
 						 compartment.c \
 						 alveolar.c \
-						 ceiling.c \						 
+						 ceiling.c \
 						 otu.c
 libbuhlmann_la_CFLAGS = -W -Wall -O2
 include_HEADERS = buhlmann.h
