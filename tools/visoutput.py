@@ -13,6 +13,7 @@ t_arr = []
 
 compN2 = []
 compHe = []
+compList = ('1', '1b', '2', '3', '4','5','6','7','8','9','10','11','12','13','14','15')
 
 width = 0.35  
 maxpressure = 0.0
@@ -56,7 +57,7 @@ rect = ax2.bar(nbComp,compHe[0],width +1 ,alpha=opacity, color='r')
 ax2.set_ylabel('Pressure')
 ax2.set_title('Pressure by compartment')
 #ax2.set_xticks(nbComp + width,1)
-ax2.set_xticklabels(('C01', 'C02', 'C03', 'C04', 'C05','C06','C07','C08','C09','C10','C11','C12','C13','C14','C15','C16'))
+ax2.set_xticklabels(compList)
 
 plt.xlabel('Compartment')
 plt.ylabel('Pressure (bar)')
@@ -70,7 +71,7 @@ def update(val):
 	rect = ax2.bar(nbComp,compN2[time],width,alpha=opacity, color='b')
 	ax2.set_xlabel('Compartment')
 	ax2.set_ylabel('Pressure (bar)')
-	ax2.set_xticklabels(('C01', 'C02', 'C03', 'C04', 'C05','C06','C07','C08','C09','C10','C11','C12','C13','C14','C15','C16'))
+	ax2.set_xticklabels(compList)
 	ax2.set_ylim(0.7, maxpressure) 
 	ax.clear()
 	ax.plot(t_arr,d_arr)
