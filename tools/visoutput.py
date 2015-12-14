@@ -21,29 +21,12 @@ for line in sys.stdin:
 	
 	t_arr.append(toks[0])
 	d_arr.append((float(toks[1])-1)*10)
-	
 	histline = []
-	histline.append(toks[3]) #1
-	histline.append(toks[3]) #2
-	histline.append(toks[5]) #3
-	histline.append(toks[7]) #4
-	histline.append(toks[9]) #5
-	histline.append(toks[11])#6
-	histline.append(toks[13])#7
-	histline.append(toks[15])#8
-	histline.append(toks[17])#9
-	histline.append(toks[19])#10
-	histline.append(toks[21])#11
-	histline.append(toks[23])#12
-	histline.append(toks[25])#13
-	histline.append(toks[27])#14
-	histline.append(toks[29])#15
-	histline.append(toks[31])#16
-	if (float(max(histline)) > maxpressure):
-		maxpressure = float(max(histline))
-
+	for i in range(3,len(toks),2):
+		histline.append(toks[i]) #1
+		if (float(max(histline)) > maxpressure):
+			maxpressure = float(max(histline))
 	hs.append(histline)
-
 fig = plt.figure()
 ax = fig.add_subplot(121)
 
@@ -62,8 +45,8 @@ rect = ax2.bar(nbComp,hs[0],width)
 
 ax2.set_ylabel('Pressure')
 ax2.set_title('Pressure by compartment')
-ax2.set_xticks(nbComp + width)
-ax2.set_xticklabels(('C01', 'C02', 'C03', 'C04', 'C05','C06','C07','C08','C09','C10','C11','C12'))
+#ax2.set_xticks(nbComp + width,1)
+ax2.set_xticklabels(('C01', 'C02', 'C03', 'C04', 'C05','C06','C07','C08','C09','C10','C11','C12','C13','C14','C15','C16'))
 
 
 axtime = plt.axes([0.2, 0.02, 0.65, 0.03])
@@ -79,7 +62,6 @@ def update(val):
 	ax.plot(t_arr[time], d_arr[time], 'or')
 
 	fig.canvas.draw()
-	
 
 stime.on_changed(update)
 
@@ -95,3 +77,4 @@ stime.on_changed(update)
 
 
 plt.show()
+

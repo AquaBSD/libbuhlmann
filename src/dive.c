@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
+#include <math.h>
 
 #include <buhlmann.h>
 
@@ -28,6 +29,8 @@ int main(void)
     while ((l = getline(&line, &buflen, stdin)) != -1) {
         double t, p;
         double dt, dp;
+        double stop = 0.0;
+        double nodectime = 90000.0;
 
         if (!l) {
             n++;
@@ -57,9 +60,23 @@ int main(void)
                                     lastp, dp / dt,
                                     dt, BUHLMANN_RQ, 0.78084f, 0.0f);
             }
-            fprintf(stdout, " %lf %lf", s[i].he_p, s[i].n2_p);
+            stop = fmax(checkforstop(&zh_l12[i],&s[i],lastp),stop);
+
+            if (nostoptime(&zh_l12[i],&s[i],lastp) > 0)
+                nodectime = fmin(nostoptime(&zh_l12[i],&s[i],lastp),nodectime);
+            //fprintf(stdout, " %lf %lf", s[i].he_p, s[i].n2_p);
         }
-        fprintf(stdout, " %lf\n", ceiling(zh_l12, s, ZH_L12_NR_COMPARTMENTS));
+        if (nodectime > 0 && nodectime != 90000.0)
+            printf(" nodectime : %f min \n", nodectime);
+        else
+            printf("\n");
+
+        /*if (stop > 0.0)
+            printf(" Stop recommanded at  : %lf m\n", (stop - 1) * 10 );
+        else
+            printf("\n");*/
+        //fprintf(stdout, " %lf\n", ceiling(zh_l12, s, ZH_L12_NR_COMPARTMENTS));
+
 
         lastp = p;
         lastt = t;

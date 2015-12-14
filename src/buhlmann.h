@@ -41,6 +41,8 @@ extern const struct compartment_constants zh_l16C[];
 #define SCHREINER_RQ 0.8f
 #define USNAVY_RQ 0.9f
 #define BUHLMANN_RQ 1.0f
+#define STOPINC 0.3f // We consider stops at 3m 6m 9m 12m etc 
+
 double ventilation(double pamb,
                    double rq,
                    double ig_ratio);
@@ -66,5 +68,13 @@ void compartment_descend(const struct compartment_constants *constants,
 double ceiling(const struct compartment_constants *constants,
                struct compartment_state *compt,
                int ncompt);
+
+double checkforstop(const struct compartment_constants *constants,
+          struct compartment_state *compt,
+          double p_ambient);
+
+double nostoptime(const struct compartment_constants *constants,
+        struct compartment_state *compt,
+        double p_ambient);
 
 #endif /* _BUHLMANN_H_ */
