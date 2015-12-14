@@ -75,7 +75,7 @@ int main(void)
             printf(" Stop recommanded at  : %lf m\n", (stop - 1) * 10 );
         else
             printf("\n");*/
-        //fprintf(stdout, " %lf\n", ceiling(zh_l12, s, ZH_L12_NR_COMPARTMENTS));
+        fprintf(stdout, " %lf\n", ceiling(zh_l12, s, ZH_L12_NR_COMPARTMENTS));
 
 
         lastp = p;
