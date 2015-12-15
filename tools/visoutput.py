@@ -11,12 +11,14 @@ d_arr = []
 t_arr = []
 
 
+
 compN2 = []
 compHe = []
 compList = ('1', '1b', '2', '3', '4','5','6','7','8','9','10','11','12','13','14','15')
 
 width = 0.35  
 maxpressure = 0.0
+ceiling = []
 opacity = 0.4
 
 for line in sys.stdin:
@@ -36,6 +38,7 @@ for line in sys.stdin:
 		if (float(max(histline)) > maxpressure):
 			maxpressure = float(max(histline))
 	compHe.append(histline)
+	ceiling.append(float(toks[len(toks)-1]))
 
 fig = plt.figure()
 ax = fig.add_subplot(121)
@@ -45,7 +48,7 @@ plt.gca().invert_yaxis()
 
 
 ax2 = fig.add_subplot(122)
-ax2.set_ylim(0.7, maxpressure) 
+ax2.set_ylim(0.7, maxpressure+0.5) 
 
 nbComp = np.arange(16)
 
@@ -69,10 +72,14 @@ def update(val):
 	time = int(stime.val)
 	ax2.clear()
 	rect = ax2.bar(nbComp,compN2[time],width,alpha=opacity, color='b')
+	ax2.hlines(ceiling[time],0,16,color='r')
+
 	ax2.set_xlabel('Compartment')
 	ax2.set_ylabel('Pressure (bar)')
 	ax2.set_xticklabels(compList)
-	ax2.set_ylim(0.7, maxpressure) 
+	ax2.set_ylim(0.0, maxpressure+1) 
+	
+
 	ax.clear()
 	ax.plot(t_arr,d_arr)
 	ax.plot(t_arr[time], d_arr[time], 'or')
