@@ -38,12 +38,16 @@ for line in sys.stdin:
 		if (float(max(histline)) > maxpressure):
 			maxpressure = float(max(histline))
 	compHe.append(histline)
-	ceiling.append(float(toks[len(toks)-1]))
+	if (float(toks[len(toks)-1])<1):
+		ceiling.append(0.0)
+	else:
+		ceiling.append(float(toks[len(toks)-1]))
 
 fig = plt.figure()
 ax = fig.add_subplot(121)
 
 plt.plot(t_arr,d_arr)
+plt.plot(t_arr,ceiling)
 plt.gca().invert_yaxis()
 
 
@@ -82,8 +86,9 @@ def update(val):
 
 	ax.clear()
 	ax.plot(t_arr,d_arr)
+	ax.plot(t_arr,ceiling)
 	ax.plot(t_arr[time], d_arr[time], 'or')
-	ax.hlines((float(ceiling[time]))*10,0,max(t_arr),color='r')
+
 
 	fig.canvas.draw()
 
