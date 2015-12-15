@@ -14,7 +14,7 @@ t_arr = []
 
 compN2 = []
 compHe = []
-compList = ('1', '1b', '2', '3', '4','5','6','7','8','9','10','11','12','13','14','15')
+compList = ('1', '2', '3', '4','5','6','7','8','9','10','11','12','13','14','15','16')
 
 width = 0.35  
 maxpressure = 0.0
@@ -54,12 +54,12 @@ nbComp = np.arange(16)
 
 
 rect = ax2.bar(nbComp,compN2[0],width,alpha=opacity, color='b')
-rect = ax2.bar(nbComp,compHe[0],width +1 ,alpha=opacity, color='r')
+#rect = ax2.bar(nbComp,compHe[0],width +1 ,alpha=opacity, color='r')
 
 
 ax2.set_ylabel('Pressure')
 ax2.set_title('Pressure by compartment')
-#ax2.set_xticks(nbComp + width,1)
+ax2.set_xticks(nbComp + width / 2 )
 ax2.set_xticklabels(compList)
 
 plt.xlabel('Compartment')
@@ -76,6 +76,7 @@ def update(val):
 
 	ax2.set_xlabel('Compartment')
 	ax2.set_ylabel('Pressure (bar)')
+	ax2.set_xticks(nbComp + width / 2)
 	ax2.set_xticklabels(compList)
 	ax2.set_ylim(0.0, maxpressure+1) 
 	
