@@ -24,7 +24,7 @@ opacity = 0.4
 for line in sys.stdin:
 	toks = line.split(" ")
 	
-	t_arr.append(toks[0])
+	t_arr.append(float(toks[0]))
 	d_arr.append((float(toks[1])-1)*10)
 	histline = []
 	for i in range(3,len(toks),2):
@@ -72,8 +72,7 @@ def update(val):
 	time = int(stime.val)
 	ax2.clear()
 	rect = ax2.bar(nbComp,compN2[time],width,alpha=opacity, color='b')
-	ax2.hlines(ceiling[time],0,16,color='r')
-
+	
 	ax2.set_xlabel('Compartment')
 	ax2.set_ylabel('Pressure (bar)')
 	ax2.set_xticks(nbComp + width / 2)
@@ -84,6 +83,7 @@ def update(val):
 	ax.clear()
 	ax.plot(t_arr,d_arr)
 	ax.plot(t_arr[time], d_arr[time], 'or')
+	ax.hlines((float(ceiling[time]))*10,0,max(t_arr),color='r')
 
 	fig.canvas.draw()
 
