@@ -28,6 +28,7 @@ int main(void)
     n = 0;
     while ((l = getline(&line, &buflen, stdin)) != -1) {
         double t, p;
+        double n2, he;
         double dt, dp;
         double stop = 0.0;
         double nodectime = 90000.0;
@@ -37,7 +38,7 @@ int main(void)
             continue;
         }
 
-        if (2 != sscanf(line, "%lf %lf", &t, &p)) {
+        if (4 != sscanf(line, "%lf %lf %lf %lf", &t, &p, &n2, &he)) {
             fprintf(stderr, "Line %d: invalid format\n", n);
             n++;
             continue;
