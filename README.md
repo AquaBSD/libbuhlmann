@@ -29,6 +29,15 @@ was used soon after in dive computer algorithms.
 
 ## Usage
 
+STDIN
+-----
+
+Here's an example of decompression calculation from STDIN:
+
+```bash
+➥  python test/gen_dive.py -d 20 -t 5 | src/dive  -
+   [...]
+
 ## Development
 
 Feel free to contribute on GitHub.
