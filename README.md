@@ -35,8 +35,9 @@ STDIN
 Here's an example of decompression calculation from STDIN:
 
 ```bash
-➥  python test/gen_dive.py -d 20 -t 5 | src/dive  -
+➥  python test/gen_dive.py -d 20 -t 5 | src/dive 
    [...]
+```   
 
 ## Development
 
