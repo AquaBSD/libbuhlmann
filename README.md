@@ -6,6 +6,7 @@
 
 1. [Overview](#overview)
 2. [Description](#description)
+2. [Requirements](#Requirements)
 3. [Usage](#usage)
 4. [Development](#development)
 
@@ -27,10 +28,19 @@ translation  was  entitled Decompression-Decompression  Sickness.  The book  was
 regarded as the most complete public reference on decompression calculations and
 was used soon after in dive computer algorithms.
 
+## Requirements
+
+#### To compile
+	- Automake
+	- Autoconf
+
+#### To test
+	- python
+	- matplotlib
+
 ## Usage
 
-STDIN
------
+#### STDIN
 
 Here's an example of decompression calculation from STDIN:
 
