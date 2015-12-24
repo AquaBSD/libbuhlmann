@@ -21,6 +21,9 @@ maxpressure = 0.0
 ceiling = []
 opacity = 0.4
 
+if sys.stdin.isatty():
+	exit()
+
 for line in sys.stdin:
 	toks = line.split(" ")
 	
