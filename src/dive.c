@@ -17,10 +17,10 @@ int main(void)
 
     lastt = 0.0f;
     lastp = 1.0f;
+
     for (i = 0; i < ZH_L12_NR_COMPARTMENTS; i++) {
         s[i].he_p = ventilation(lastp, BUHLMANN_RQ, 0.0f);
         s[i].n2_p = ventilation(lastp, BUHLMANN_RQ, 0.78084f);
-
     }
 
     line = NULL;
@@ -28,7 +28,7 @@ int main(void)
     n = 0;
     while ((l = getline(&line, &buflen, stdin)) != -1) {
         double t, p;
-        double n2, he;
+        double o2, he;
         double dt, dp;
         double stop = 0.0;
         double nodectime = 90000.0;
@@ -38,7 +38,7 @@ int main(void)
             continue;
         }
 
-        if (4 != sscanf(line, "%lf %lf %lf %lf", &t, &p, &n2, &he)) {
+        if (4 != sscanf(line, "%lf %lf %lf %lf", &t, &p, &o2, &he)) {
             fprintf(stderr, "Line %d: invalid format\n", n);
             n++;
             continue;
@@ -59,7 +59,7 @@ int main(void)
                 compartment_descend(&zh_l12[i],
                                     &s[i], &s[i],
                                     lastp, dp / dt,
-                                    dt, BUHLMANN_RQ, 0.78084f, 0.0f);
+                                    dt, BUHLMANN_RQ, 1.0f-o2-he, he);
             }
             stop = fmax(checkforstop(&zh_l12[i],&s[i],lastp),stop);
 

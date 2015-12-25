@@ -18,9 +18,9 @@ gas = doc.getElementsByTagName('DiveMixture')
 
 for subNode in gas.item(0).childNodes:
 	if (subNode.nodeName == "Oxygen"):
-		O2=float(subNode.childNodes[0].nodeValue)
+		O2=float(subNode.childNodes[0].nodeValue)/100
 	if (subNode.nodeName == "Helium"):
-		H2=float(subNode.childNodes[0].nodeValue)
+		H2=float(subNode.childNodes[0].nodeValue)/100
 
 nodes = doc.getElementsByTagName('Dive.Sample')
 
