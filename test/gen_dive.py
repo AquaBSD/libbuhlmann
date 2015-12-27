@@ -100,6 +100,7 @@ nbdeco = 0
 
 while (depth > 0.0):
 	if nbdeco < len(decogasses) and decogasses[nbdeco]['depth'] >= depth:
+		ascrate = 10
 		O2 = decogasses[nbdeco]['o2']
 		h2 = decogasses[nbdeco]['he']
 		
