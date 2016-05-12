@@ -49,6 +49,18 @@ Here's an example of decompression calculation from STDIN:
    [...]
 ```   
 
+To display the result on a nice interactive graph:
+
+```bash
+➥  python test/gen_dive.py -d 20 -t 5 | src/dive | python tools/visoutput.py
+```
+
+remember to run the output visuatlisation on a Virtual python environment.
+```bash
+➥  cd tools && virtualenv venv && source venv/bin/activate
+➥  pip install -r requirements.txt
+```
+
 ## Development
 
 Feel free to contribute on GitHub.
