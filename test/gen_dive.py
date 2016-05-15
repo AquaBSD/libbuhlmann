@@ -1,16 +1,9 @@
 #!/usr/bin/python
 
 import argparse
+import sys
 
-ascrate=15
-decrate=20
-sampling=.1
-time=0.0
-depth=0.0
-O2=.21
-he=0.0
-stime=1.0
-nbgas = 0
+
 
 def check_negative(value):
     dvalue = float(value)
@@ -18,7 +11,7 @@ def check_negative(value):
          raise argparse.ArgumentTypeError("%s is an invalid value" % value)
     return dvalue
 
-def gen_dive():
+def initialize():
 
 	parser = argparse.ArgumentParser(description='Generate a dive profile.')
 
@@ -59,7 +52,7 @@ def gen_dive():
 		dict['he'] = 0.0
 		gases.append(dict)
 
-	currgas = gases[0]
+	
 
 	#deco gas parsing
 
@@ -75,21 +68,32 @@ def gen_dive():
 				decogasses.append(dict)
 			else:
 				raise argparse.ArgumentTypeError("%s is an invalid formated gas" % gas)
+	generate_dive(btime, maxdepth, gases, decogasses)
 
-
+def generate_dive(btime, maxdepth, gases, decogasses, out=sys.stdout):
+	O2=.21
+	sampling=.1
+	he=0.0
+	stime=1.0
+	nbgas = 0
+	time=0.0
+	depth=0.0
+	ascrate=15
+	decrate=20
+	currgas = gases[0]
 
 	#descent
 	while (time < btime and depth < maxdepth):
-		print ("%.2f %.2f %.2f %.2f" % (time , (depth/10+1), currgas['o2'], currgas['he']))
+		out.write ("%.2f %.2f %.2f %.2f\n" % (time , (depth/10+1), currgas['o2'], currgas['he']))
 		depth = depth + (decrate * sampling)
 		time = time + sampling
 	depth = float(maxdepth)
-	print ("%.2f %.2f %.2f %.2f" % (time , (depth/10+1), O2, he))
+	out.write ("%.2f %.2f %.2f %.2f\n" % (time , (depth/10+1), O2, he))
 
 	#bottom
 	time = time + sampling
 	while (time < btime):
-		print ("%.2f %.2f %.2f %.2f" % (time , (depth/10+1), O2, he))
+		out.write ("%.2f %.2f %.2f %.2f\n" % (time , (depth/10+1), O2, he))
 		time = time + sampling
 
 	#ascent
@@ -106,7 +110,7 @@ def gen_dive():
 			h2 = decogasses[nbdeco]['he']
 			
 
-		print ("%.2f %.2f %.2f %.2f" % (time , (depth/10+1), O2, he))
+		out.write ("%.2f %.2f %.2f %.2f\n" % (time , (depth/10+1), O2, he))
 		if nbdeco < len(decogasses) and decogasses[nbdeco]['depth'] >= depth and decogasses[nbdeco]['time'] > 0:
 			decogasses[nbdeco]['time'] -=  sampling
 			if (decogasses[nbdeco]['time'] < 0):
@@ -120,10 +124,10 @@ def gen_dive():
 	while (stime > 0):
 		time = time + sampling
 		stime = stime - sampling
-		print ("%.2f %.2f %.2f %.2f" % (time , (depth/10+1), O2, he))
+		out.write ("%.2f %.2f %.2f %.2f\n" % (time , (depth/10+1), O2, he))
 
 
 if __name__ == "__main__":
     import sys
-    gen_dive()
+    initialize()
 

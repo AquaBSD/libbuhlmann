@@ -3,4 +3,4 @@ compiler: gcc
 install: ./bootstrap.sh
 script: 
   - ./configure && make
-  - python test/test_all_of_the_units.py
+  - python test/test_all_of_the_units.py -v
