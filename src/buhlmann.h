@@ -77,4 +77,9 @@ double nostoptime(const struct compartment_constants *constants,
         struct compartment_state *compt,
         double p_ambient);
 
+double gradient_factor_slope(double gfhi, double gflow,
+               double final_stop_depth, double first_stop_depth);
+
+double gradient_factor(double gfslope, double curr_stop_depth, double gfhi);
+
 #endif /* _BUHLMANN_H_ */

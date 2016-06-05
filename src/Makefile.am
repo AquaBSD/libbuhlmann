@@ -8,7 +8,8 @@ libbuhlmann_la_SOURCES = buhlmann.c \
 						 alveolar.c \
 						 ceiling.c \
 						 stop.c \
-						 otu.c
+						 otu.c \
+						 gradientfactor.c
 libbuhlmann_la_CFLAGS = -W -Wall -O2
 include_HEADERS = buhlmann.h
 noinst_PROGRAMS = dive
