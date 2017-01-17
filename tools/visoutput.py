@@ -101,11 +101,10 @@ def update(val):
 
 
 	ax.clear()
-	ax.text(20, -3, "NoDec: " + nodectime[time], fontsize=15)
+	ax.text(2, 3, "NoDec: " + str("%.1f" % nodectime[time]), fontsize=15)
 	ax.plot(t_arr,d_arr)
 	ax.plot(t_arr,ceiling)
 	ax.plot(t_arr[time], d_arr[time], 'or')
-	
 	fig.canvas.draw()
 
 stime.on_changed(update)
