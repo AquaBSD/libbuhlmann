@@ -65,7 +65,7 @@ int main(void)
 
             if (nostoptime(&zh_l12[i],&s[i],lastp) > 0)
                 nodectime = fmin(nostoptime(&zh_l12[i],&s[i],lastp),nodectime);
-            fprintf(stdout, " %lf %lf", s[i].he_p, s[i].n2_p);
+            fprintf(stdout, " %lf %lf", s[i].n2_p, s[i].he_p);
         }
        /* if (nodectime > 0 && nodectime != 90000.0)
             printf(" nodectime : %f min \n", nodectime);
@@ -76,7 +76,7 @@ int main(void)
             printf(" Stop recommanded at  : %lf m\n", (stop - 1) * 10 );
         else
             printf("\n");*/
-        fprintf(stdout, " %lf\n", ceiling(zh_l12, s, ZH_L12_NR_COMPARTMENTS));
+        fprintf(stdout, " %lf %lf\n", ceiling(zh_l12, s, ZH_L12_NR_COMPARTMENTS), nodectime);
 
 
         lastp = p;

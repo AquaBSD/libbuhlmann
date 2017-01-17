@@ -71,7 +71,7 @@ def initialize():
 	generate_dive(btime, maxdepth, gases, decogasses)
 
 def generate_dive(btime, maxdepth, gases, decogasses, out=sys.stdout):
-	O2=.21
+	O2=.20948
 	sampling=.1
 	he=0.0
 	stime=1.0

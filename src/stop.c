@@ -6,36 +6,56 @@
 #include <stdio.h>
 
 
+// double checkforstop(const struct compartment_constants *constants,
+// 					struct compartment_state *compt,
+// 					double p_ambient)
+// {
+// 	double next_stop = 0.0; 
+// 	double dp = STOPINC;
+// 	double dt = 1;
+// 	short isFound = 0;
+// 	struct compartment_state end;
+
+// 	end.n2_p = compt->n2_p;
+// 	end.he_p = compt->he_p;
+ 
+// 	if (p_ambient != 0)
+// 		next_stop =  p_ambient - fmod(p_ambient,0.3);
+
+// 	while (next_stop >= 0 && !isFound)
+// 	{
+// 		compartment_descend(constants,
+//                             &end, &end,
+//                             p_ambient, dp / dt,
+//                             dt, BUHLMANN_RQ, 0.78084f, 0.0f);
+// 		if (end.n2_p > constants->n2_a)
+// 			isFound = 1;
+// 		next_stop = next_stop - 0.3;
+// 	}
+// 	return next_stop;
+// } 
+
+
+
 double checkforstop(const struct compartment_constants *constants,
 					struct compartment_state *compt,
 					double p_ambient)
 {
-	double next_stop = 0.0; 
-	double dp = STOPINC;
-	double dt = 1;
-	short isFound = 0;
-	struct compartment_state end;
+	double PStopN2 = 0.0;
+	double PStopHe = 0.0;
+	p_ambient = 0;
+	//N2
+	PStopN2 = (compt->n2_p - constants->n2_a) * constants->n2_b;
 
-	end.n2_p = compt->n2_p;
-	end.he_p = compt->he_p;
- 
-	if (p_ambient != 0)
-		next_stop =  p_ambient - fmod(p_ambient,0.3);
+	//H2
+	PStopHe = (compt->he_p - constants->he_a) * constants->he_b;
 
-	while (next_stop >= 0 && !isFound)
-	{
-		compartment_descend(constants,
-                            &end, &end,
-                            p_ambient, dp / dt,
-                            dt, BUHLMANN_RQ, 0.78084f, 0.0f);
-		if (end.n2_p > constants->n2_a)
-			isFound = 1;
-		next_stop = next_stop - 0.3;
-	}
-	return next_stop;
+	if (PStopN2 > PStopHe)
+		return PStopN2;
+	return PStopHe;
 
+}
 
-} 
 
 double nostoptime(const struct compartment_constants *constants,
 				struct compartment_state *compt,
@@ -46,6 +66,8 @@ double nostoptime(const struct compartment_constants *constants,
 	double po = 0.0;
 	double p = 0.0;
 	double t = 0.0;
+
+	compt = compt;
 
 	k = 0.693/constants->n2_h;
 	p = ((constants->n2_a + 1.003) / constants->n2_b)*10;

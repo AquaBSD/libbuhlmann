@@ -19,6 +19,7 @@ compList = ('1', '2', '3', '4','5','6','7','8','9','10','11','12','13','14','15'
 width = 0.35  
 maxpressure = 0.0
 ceiling = []
+nodectime = []
 opacity = 0.4
 
 if sys.stdin.isatty():
@@ -29,24 +30,35 @@ for line in sys.stdin:
 	
 	t_arr.append(float(toks[0]))
 	d_arr.append((float(toks[1])-1)*10)
+
 	histline = []
-	for i in range(3,len(toks),2):
+	for i in range(2,len(toks)-2,2):
 		histline.append(toks[i]) #1
 		if (float(max(histline)) > maxpressure):
 			maxpressure = float(max(histline))
 	compN2.append(histline)
+
 	histline = []
-	for i in range(2,len(toks)-1,2):
+	for i in range(3,len(toks)-3,2):
 		histline.append(toks[i]) 
 		if (float(max(histline)) > maxpressure):
 			maxpressure = float(max(histline))
 	compHe.append(histline)
-	if (float(toks[len(toks)-1])<1):
+
+
+	if (float(toks[len(toks)-2])<1):
 		ceiling.append(0.0)
 	else:
-		ceiling.append(float(toks[len(toks)-1]))
+		ceiling.append(float(toks[len(toks)-2]))
+
+
+	if (float(toks[len(toks)-1]) == 90000.000000):
+		nodectime.append(99)
+	else:
+		nodectime.append(float(toks[len(toks)-1]))
 
 fig = plt.figure()
+fig.suptitle('Decompression', fontsize=14, fontweight='bold')
 ax = fig.add_subplot(121)
 
 plt.plot(t_arr,d_arr)
@@ -87,12 +99,13 @@ def update(val):
 	ax2.set_ylim(0.0, maxpressure+1) 
 	
 
+
 	ax.clear()
+	ax.text(20, -3, nodectime[time], fontsize=15)
 	ax.plot(t_arr,d_arr)
 	ax.plot(t_arr,ceiling)
 	ax.plot(t_arr[time], d_arr[time], 'or')
-
-
+	
 	fig.canvas.draw()
 
 stime.on_changed(update)
