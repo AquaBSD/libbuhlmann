@@ -46,16 +46,14 @@ for line in sys.stdin:
 	compHe.append(histline)
 
 
-	if (float(toks[len(toks)-2])<1):
+	if (float(toks[len(toks)-2]) < 1.0):
 		ceiling.append(0.0)
 	else:
-		ceiling.append(float(toks[len(toks)-2]))
+		ceiling.append(float(toks[len(toks)-2]) - 1.0)
 
 
-	if (float(toks[len(toks)-1]) == 90000.000000):
-		nodectime.append(99)
-	else:
-		nodectime.append(float(toks[len(toks)-1]))
+
+	nodectime.append(float(toks[len(toks)-1]))
 
 fig = plt.figure()
 fig.suptitle('Decompression', fontsize=14, fontweight='bold')
@@ -101,7 +99,16 @@ def update(val):
 
 
 	ax.clear()
-	ax.text(2, 3, "NoDec: " + str("%.1f" % nodectime[time]), fontsize=15)
+	ax.text(2, 3, "Ceiling : " + str("%.1f m" % ((ceiling[time]) *10)), fontsize=15)
+
+	mins = int(nodectime[time])
+	secs = int((nodectime[time] - mins) * 100)
+
+	if (secs >= 60):
+		mins = mins + 1
+		secs = secs - 60
+
+	ax.text(2, 6, "NoDec   : " + "{0} m {1} s".format(mins, secs) , fontsize=15)
 	ax.plot(t_arr,d_arr)
 	ax.plot(t_arr,ceiling)
 	ax.plot(t_arr[time], d_arr[time], 'or')

@@ -65,17 +65,13 @@ void compartment_descend(const struct compartment_constants *constants,
                          double rq,
                          double n2_ratio, double he_ratio);
 
-double ceiling(const struct compartment_constants *constants,
-               struct compartment_state *compt,
-               int ncompt);
+double getCeiling(const struct compartment_constants *constants,
+               struct compartment_state *compt);
 
-double checkforstop(const struct compartment_constants *constants,
-          struct compartment_state *compt,
-          double p_ambient);
-
-double nostoptime(const struct compartment_constants *constants,
+double nodecotime(const struct compartment_constants *constants,
         struct compartment_state *compt,
-        double p_ambient);
+        double p_ambient,
+        double n2_ratio, double he_ratio);
 
 double gradient_factor_slope(double gfhi, double gflow,
                double final_stop_depth, double first_stop_depth);

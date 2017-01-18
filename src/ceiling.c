@@ -4,18 +4,22 @@
 
 #include <config.h>
 
-double ceiling(const struct compartment_constants *constants,
-               struct compartment_state *compt,
-               int ncompt)
+
+
+// Return Absolute pressure of the Ceiling
+double getCeiling(const struct compartment_constants *constants,
+               struct compartment_state *compt)
 {
-    int i;
-    double c = -HUGE_VAL;
+    double PStopN2 = 0.0;
+	double PStopHe = 0.0;
+	
+	//N2
+	PStopN2 = (compt->n2_p - constants->n2_a) * constants->n2_b;
 
-    for (i = 0; i < ncompt; i++) {
-        double mval = compartment_mvalue(&constants[i], &compt[i]);
+	//H2
+	PStopHe = (compt->he_p - constants->he_a) * constants->he_b;
 
-        c = fmax(c, mval);
-    }
-
-    return c;
+	if (PStopN2 > PStopHe)
+		return PStopN2;
+	return PStopHe;
 }

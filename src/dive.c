@@ -30,8 +30,9 @@ int main(void)
         double t, p;
         double o2, he;
         double dt, dp;
+        double ceiling = 0.0;
         double stop = 0.0;
-        double nodectime = 90000.0;
+        double nodectime = 100.0;
 
         if (!l) {
             n++;
@@ -61,11 +62,15 @@ int main(void)
                                     lastp, dp / dt,
                                     dt, BUHLMANN_RQ, 1.0f-o2-he, he);
             }
-            stop = fmax(checkforstop(&zh_l12[i],&s[i],lastp),stop);
 
-            if (nostoptime(&zh_l12[i],&s[i],lastp) > 0)
-                nodectime = fmin(nostoptime(&zh_l12[i],&s[i],lastp),nodectime);
             fprintf(stdout, " %lf %lf", s[i].n2_p, s[i].he_p);
+
+            ceiling = fmax(getCeiling(&zh_l12[i],&s[i]),ceiling);
+            nodectime = fmin(nodecotime(&zh_l12[i],&s[i],lastp,1.0f-o2-he,he),nodectime);
+
+            //if (nostoptime(&zh_l12[i],&s[i],lastp) > 0)
+            //    nodectime = fmin(nostoptime(&zh_l12[i],&s[i],lastp),nodectime);
+           
         }
        /* if (nodectime > 0 && nodectime != 90000.0)
             printf(" nodectime : %f min \n", nodectime);
@@ -76,7 +81,7 @@ int main(void)
             printf(" Stop recommanded at  : %lf m\n", (stop - 1) * 10 );
         else
             printf("\n");*/
-        fprintf(stdout, " %lf %lf\n", ceiling(zh_l12, s, ZH_L12_NR_COMPARTMENTS), nodectime);
+        fprintf(stdout, " %lf %lf\n", ceiling, nodectime);
 
 
         lastp = p;
